@@ -1,0 +1,22 @@
+name: flutter_share_content
+description:
+  Flutter plugin to share content to a generic app
+  Picture, message and title are allowed
+  Android supported
+  iOS not supported
+version: 0.1.0
+author: Nadia Ghebreial Nieto <nadiagnieto@gmail.com>
+homepage:
+
+environment:
+  sdk: ">=2.0.0-dev.68.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+flutter:
+  plugin:
+    androidPackage: io.flutter.plugins.fluttersharecontent
+    pluginClass: FlutterShareContentPlugin
+
