@@ -1,11 +1,12 @@
 # Share content for flutter
 
-A simple plugin for Android to share content.
+[![pub package](https://img.shields.io/pub/v/flutter_share_content.svg)](https://pub.dartlang.org/packages/flutter_share_content)
 
-This content could be a picture and also a message. 
-Also you can pick the title to show in the sharing screen.
+A simple plugin for Flutter to share content.
+
+This content could be a picture but also a message. Furthermore a title can be added to show in the sharing screen.
  
-Every version of Android is supported, included from version 24 and upper.
+Every version of Android is supported, included from version 24 and above.
 For those devices is mandatory the use of `FileProvider` class in order to grant access 
 to the images stored in the phone.
 
@@ -26,7 +27,7 @@ dependencies {
 }
 ```
 
-After that you have to add this in your `AndroidManifest.xml`
+And this in your `AndroidManifest.xml`
 
 ```xml
 <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
@@ -44,7 +45,7 @@ After that you have to add this in your `AndroidManifest.xml`
         android:resource="@xml/filepaths"/>
 </provider>
 ```
-Also create `res/filepaths.xml` with this content with this content
+Also create `res/filepaths.xml` with this content
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>

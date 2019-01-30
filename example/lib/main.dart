@@ -7,9 +7,8 @@ import 'package:flutter_share_content/flutter_share_content.dart';
 
 void main() => runApp(MyApp());
 
-
+/// StatelessWidget to show the Stateful one
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
@@ -20,16 +19,17 @@ class MyApp extends StatelessWidget {
   }
 }
 
+/// ShareContent to create the state
 class ShareContent extends StatefulWidget {
   @override
   _ShareContentState createState() => _ShareContentState();
 }
 
+/// Made in in that way to show the modal bottom sheet
 class _ShareContentState extends State<ShareContent> {
   File _image;
   TextEditingController _title = new TextEditingController();
-  TextEditingController _msg =  new TextEditingController();
-  TextEditingController _subject = new TextEditingController();
+  TextEditingController _msg = new TextEditingController();
   BuildContext _context;
 
   Future getImage() async {
@@ -40,9 +40,10 @@ class _ShareContentState extends State<ShareContent> {
     });
   }
 
-  void getText(){
-    showModalBottomSheet(context: _context,
-        builder:(BuildContext context) {
+  void getText() {
+    showModalBottomSheet(
+        context: _context,
+        builder: (BuildContext context) {
           return new Container(
             child: new Column(
               children: <Widget>[
@@ -50,32 +51,33 @@ class _ShareContentState extends State<ShareContent> {
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     hintText: "Title",
-                    contentPadding: EdgeInsets.only(bottom: 50.0, top: 10.0, left: 12.0),
+                    contentPadding:
+                        EdgeInsets.only(bottom: 50.0, top: 10.0, left: 12.0),
                   ),
-
                   controller: _title,
                 ),
                 new TextField(
                   decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      hintText: "Message",
-                    contentPadding: EdgeInsets.only(bottom: 150.0, top: 10.0, left: 12.0),
+                    border: OutlineInputBorder(),
+                    hintText: "Message",
+                    contentPadding:
+                        EdgeInsets.only(bottom: 150.0, top: 10.0, left: 12.0),
                   ),
                   maxLines: null,
                   keyboardType: TextInputType.multiline,
-
                   controller: _msg,
                 )
               ],
             ),
           );
-        }
-    );
+        });
   }
 
-  void share(){
-    FlutterShareContent.shareContent(imageUrl: _image == null? null: _image.path,
-        msg: _msg.text, title: _title.text);
+  void share() {
+    FlutterShareContent.shareContent(
+        imageUrl: _image == null ? null : _image.path,
+        msg: _msg.text,
+        title: _title.text);
   }
 
   @override
@@ -96,29 +98,25 @@ class _ShareContentState extends State<ShareContent> {
               ? new Text('No image selected.')
               : new Image.file(_image),
         ),
-        floatingActionButton:
-        FloatingActionButton(onPressed: share, child: Icon(Icons.share),),
-
-        bottomNavigationBar:
-        BottomAppBar(
-          child:
-          Row(
-            children: <Widget>[
-              new FloatingActionButton(
-                onPressed: getImage,
-                tooltip: 'Pick Image',
-                child: new Icon(Icons.camera_alt),
-              ),
-              new FloatingActionButton(
-                onPressed: getText,
-                tooltip: 'Show text',
-                child: new Icon(Icons.text_fields),
-              ),
-            ],
-          )
-
+        floatingActionButton: FloatingActionButton(
+          onPressed: share,
+          child: Icon(Icons.share),
         ),
-
+        bottomNavigationBar: BottomAppBar(
+            child: Row(
+          children: <Widget>[
+            new FloatingActionButton(
+              onPressed: getImage,
+              tooltip: 'Pick Image',
+              child: new Icon(Icons.camera_alt),
+            ),
+            new FloatingActionButton(
+              onPressed: getText,
+              tooltip: 'Show text',
+              child: new Icon(Icons.text_fields),
+            ),
+          ],
+        )),
       ),
     );
   }
