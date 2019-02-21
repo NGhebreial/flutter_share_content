@@ -11,7 +11,6 @@ class FlutterShareContent {
   /// [title] is the title to show in the sharing window, by default is "Share to"
   static Future<void> shareContent(
       {String imageUrl, String msg, String title}) async {
-
     return await _channel.invokeMethod('shareContent',
         <String, dynamic>{'path': imageUrl, 'msg': msg, 'title': title});
   }

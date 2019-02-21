@@ -4,7 +4,7 @@ description:
   Picture, message and title are allowed
   Android supported
   iOS not supported
-version: 0.1.1
+version: 0.2.0
 author: Nadia Ghebreial Nieto <nadiagnieto@gmail.com>
 homepage: https://github.com/NGhebreial/flutter_share_content
 repository: https://github.com/NGhebreial/flutter_share_content
