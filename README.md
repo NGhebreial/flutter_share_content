@@ -10,7 +10,9 @@ Every version of Android is supported, included from version 24 and above.
 For those devices is mandatory the use of `FileProvider` class in order to grant access 
 to the images stored in the phone.
 
-iOS is on the way.
+Version 0.2.0 is supporting androidX.
+
+iOS is not going to be implemented because I don't have a macOS.
 
 
 ## Installation
@@ -23,7 +25,7 @@ Add this in your `build.gradle`
 
 ```gradle
 dependencies {
-    api 'com.android.support:support-v4:27.1.1'
+    api 'androidx.legacy:legacy-support-v4:1.0.0'
 }
 ```
 
@@ -36,7 +38,7 @@ And this in your `AndroidManifest.xml`
 ...
 
 <provider
-    android:name="android.support.v4.content.FileProvider"
+    android:name="androidx.core.content.FileProvider"
     android:authorities="${applicationId}.provider"
     android:exported="false"
     android:grantUriPermissions="true">
