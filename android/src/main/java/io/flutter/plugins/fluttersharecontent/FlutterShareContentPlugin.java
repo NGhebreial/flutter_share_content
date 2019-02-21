@@ -3,10 +3,10 @@ package io.flutter.plugins.fluttersharecontent;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
-import android.support.v4.content.FileProvider;
 
 import java.io.File;
 
+import androidx.core.content.FileProvider;
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
@@ -68,12 +68,13 @@ public class FlutterShareContentPlugin implements MethodCallHandler {
     private void imageIntent(Intent share, String path) {
         File media = new File(path);
 
-        Uri apkURI = FileProvider.getUriForFile(
-                registrar.activity().getBaseContext(),
-                registrar.activity().getApplicationContext()
-                        .getPackageName() + ".provider", media);
-
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+
+            Uri apkURI = FileProvider.getUriForFile(
+                    registrar.activity().getBaseContext(),
+                    registrar.activity().getApplicationContext()
+                            .getPackageName() + ".provider", media);
+
             share.putExtra(Intent.EXTRA_STREAM, apkURI);
         } else
             share.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(media));
