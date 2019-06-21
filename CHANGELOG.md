@@ -1,3 +1,7 @@
+## 0.2.0+1
+
+* Updated dependencies
+
 ## 0.2.0
 
 * Migrate to AndroidX on android support library. 
